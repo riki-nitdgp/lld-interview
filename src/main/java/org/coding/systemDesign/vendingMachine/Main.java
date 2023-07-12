@@ -8,12 +8,11 @@ import java.util.HashMap;
 public class Main {
     public static void main(String[] args) {
         VendingMachine vendingMachine = new VendingMachine();
-        vendingMachine.setCoinList(new ArrayList<>());
 
         try {
             System.out.println("Setting up inventory");
             initializeInventory(vendingMachine);
-            System.out.println(vendingMachine.getInventory().displayInventory());
+            System.out.println(vendingMachine.getInventory().displayInventory().toString());
 
             System.out.println("|");
             System.out.println("clicking on InsertCoinButton");
@@ -33,7 +32,9 @@ public class Main {
             vendingMachineState.clickOnSelectProductButton(vendingMachine);
 
             vendingMachineState = vendingMachine.getVendingMachineState();
-            vendingMachineState.selectProduct(vendingMachine, 103);
+            vendingMachineState.selectProduct(vendingMachine, 101);
+
+            System.out.println(vendingMachine.getInventory().displayInventory().toString());
 
 
         } catch (Exception e){

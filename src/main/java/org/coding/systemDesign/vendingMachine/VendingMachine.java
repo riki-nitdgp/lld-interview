@@ -2,6 +2,8 @@ package org.coding.systemDesign.vendingMachine;
 
 import org.coding.systemDesign.vendingMachine.VendingState.State;
 import org.coding.systemDesign.vendingMachine.VendingState.impl.IdleState;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class VendingMachine {
@@ -12,6 +14,7 @@ public class VendingMachine {
 
     VendingMachine(){
         vendingMachineState = new IdleState();
+        coins = new ArrayList<>();
     }
 
     public State getVendingMachineState() {

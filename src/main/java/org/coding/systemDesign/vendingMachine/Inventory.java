@@ -3,6 +3,7 @@ package org.coding.systemDesign.vendingMachine;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class Inventory {
     HashMap<Integer, ItemShelf> itemInventory;
@@ -50,8 +51,19 @@ public class Inventory {
         }
     }
 
-    public HashMap<Integer, ItemShelf> displayInventory() {
-        return itemInventory;
+    public List<HashMap<String, String>> displayInventory() {
+        Set<Integer> productCodes = itemInventory.keySet();
+        List<HashMap<String, String>> inventory = new ArrayList<>();
+        for(int productCode: productCodes){
+            HashMap<String, String> itemDetails = new HashMap<>();
+            ItemShelf itemSelf = itemInventory.get(productCode);
+            itemDetails.put("name", itemSelf.item.getName());
+            itemDetails.put("price", Integer.toString(itemSelf.item.getPrice()));
+            itemDetails.put("code", Integer.toString(productCode));
+            itemDetails.put("quantity", Integer.toString(itemSelf.count));
+            inventory.add(itemDetails);
+        }
+        return inventory;
     }
 
 
